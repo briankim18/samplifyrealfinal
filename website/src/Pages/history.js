@@ -10,7 +10,7 @@ const History = () => {
 
   return (
     <div id="page-wrap">
-      <h1>WATCHED VIDEOS</h1>
+      <h1>SEEN VIDEOS</h1>
       {watchedVideos.map((videoId) => (
         <div key={videoId} style={{ padding: '10px' }}>
           <iframe
