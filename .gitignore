@@ -21,7 +21,7 @@ website/node_modules/.cache/
 .env.production.local
 .cmd
 .ps1
-.pack
+default-development
 
 
 npm-debug.log*
@@ -40,4 +40,7 @@ slnx.sqlite
 VSWorkspaceState.json
 ProjectSettings.json
 
+
+**/build
+node_modules
 

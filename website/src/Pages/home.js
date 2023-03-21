@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+
 const Home = () => {
   const [videoId, setVideoId] = useState(null);
-  const [buttonClicks, setButtonClicks] = useState(0);
+  const [buttonClicks] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     fetch('./northamerica').then((data) => {
@@ -23,14 +26,30 @@ const Home = () => {
       const watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
       watchedVideos.push(obj.data);
       localStorage.setItem('watchedVideos', JSON.stringify(watchedVideos));
+      setIsLiked(localStorage.getItem('likedVideos')?.includes(obj.data));
     });
-    setButtonClicks(buttonClicks + 1);
+  };
+
+  const handleLike = (videoId) => {
+    const likedVideos = JSON.parse(localStorage.getItem('likedVideos')) || [];
+    const index = likedVideos.indexOf(videoId);
+    if (index === -1) {
+      // Video is not yet liked, add it to the list
+      likedVideos.push(videoId);
+      localStorage.setItem('likedVideos', JSON.stringify(likedVideos));
+      setIsLiked(true);
+    } else {
+      // Video is already liked, remove it from the list
+      likedVideos.splice(index, 1);
+      localStorage.setItem('likedVideos', JSON.stringify(likedVideos));
+      setIsLiked(false);
+    }
   };
 
   const categories = ['brazilian', 'japanese', 'northamerica', 'french', 'drumbreaks'];
 
   return (
-    <div id="page-wrap">
+    <div id="page-wrap" div style={{ paddingTop: '50px', paddingLeft: '200px'}}>
       <h1>HOME PAGE</h1>
       <div style={{ padding: '10px' }}>
         <iframe
@@ -45,6 +64,7 @@ const Home = () => {
         ></iframe>
         
       </div>
+      <button onClick={() => handleLike(videoId)}> {isLiked ? <FaHeart color="red" /> : <FaRegHeart />} </button>
       <div id = "button-wrap">
       {categories.map((category) => (
           <button onClick={() => handleClick(category)} key={category}>

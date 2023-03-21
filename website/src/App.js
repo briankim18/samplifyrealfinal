@@ -13,11 +13,13 @@ function App() {
       <BrowserRouter>
       <Header />
         <Sidebar />
+        <div id="pages">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/history" element={<History />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
+        </div>
       </BrowserRouter>
       <div id = "page-wrap">
       </div>

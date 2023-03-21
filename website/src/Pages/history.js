@@ -1,4 +1,6 @@
 import React from 'react';
+import '../App.css';
+import { FaTrashAlt } from "react-icons/fa";
 
 const History = () => {
   const watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
@@ -8,10 +10,21 @@ const History = () => {
     window.location.reload(); // reload the page to reflect the changes
   };
 
+  // reverse the order of watchedVideos
+  const reversedWatchedVideos = watchedVideos.slice().reverse();
+
+
   return (
-    <div id="page-wrap">
-      <h1>SEEN VIDEOS</h1>
-      {watchedVideos.map((videoId) => (
+    <div id="page-wrap" div style={{ paddingTop: '50px', paddingLeft: '200px'}}>
+      <h1>HISTORY</h1>
+      {watchedVideos.length === 0 && (
+        "No videos to be displayed"
+      )}
+      {watchedVideos.length > 0 && (
+        <button onClick={handleClearHistory} >Clear History</button>
+      )}
+      {reversedWatchedVideos.map((videoId) => (
+        <div>
         <div key={videoId} style={{ padding: '10px' }}>
           <iframe
             id="ytvideo"
@@ -24,10 +37,13 @@ const History = () => {
             allowFullScreen
           ></iframe>
         </div>
+        <button onClick={() => {
+          const updatedHistory = watchedVideos.filter((id) => id !== videoId);
+          localStorage.setItem('likedVideos', JSON.stringify(updatedHistory));
+          window.location.reload();
+        }}>  <FaTrashAlt /> </button>
+        </div>
       ))}
-      {watchedVideos.length > 0 && (
-        <button onClick={handleClearHistory} style={{ fontSize: '1.2rem', padding: '10px 20px', backgroundColor: '#1f98ea', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '20px' }}>Clear History</button>
-      )}
     </div>
   );
 };
