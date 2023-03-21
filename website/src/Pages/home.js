@@ -17,6 +17,9 @@ const Home = () => {
 
   const handleClick = () => {
     setButtonClicks(buttonClicks + 1);
+    const watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
+    watchedVideos.push(videoId);
+    localStorage.setItem('watchedVideos', JSON.stringify(watchedVideos));
   };
 
   return (

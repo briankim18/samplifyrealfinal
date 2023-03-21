@@ -1,42 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const History = () => {
-  const [videoIds, setVideoIds] = useState([]);
-
-  useEffect(() => {
-    const history = JSON.parse(localStorage.getItem('history')) || [];
-    setVideoIds(history);
-  }, []);
+  const watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
 
   const handleClearHistory = () => {
-    localStorage.removeItem('history');
-    setVideoIds([]);
+    localStorage.removeItem('watchedVideos');
+    window.location.reload(); // reload the page to reflect the changes
   };
 
   return (
     <div id="page-wrap">
-      <h1>History</h1>
-      {videoIds.length === 0 ? (
-        <p>No videos watched yet.</p>
-      ) : (
-        <>
-          <ul>
-            {videoIds.map((videoId) => (
-              <li key={videoId}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${videoId}`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </li>
-            ))}
-          </ul>
-          <button onClick={handleClearHistory}>Clear History</button>
-        </>
+      <h1>WATCHED VIDEOS</h1>
+      {watchedVideos.map((videoId) => (
+        <div key={videoId} style={{ padding: '10px' }}>
+          <iframe
+            id="ytvideo"
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      ))}
+      {watchedVideos.length > 0 && (
+        <button onClick={handleClearHistory} style={{ fontSize: '1.2rem', padding: '10px 20px', backgroundColor: '#1f98ea', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '20px' }}>Clear History</button>
       )}
     </div>
   );
@@ -44,43 +34,7 @@ const History = () => {
 
 export default History;
 
-// import React, { useEffect, useState } from 'react';
 
-// const History = () => {
-//   const [videoIds, setVideoIds] = useState([]);
-
-//   useEffect(() => {
-//     fetch('./getVideoIds').then((data) => {
-//       return data.json();
-//     }).then((obj) => {
-//       setVideoIds(obj.data);
-//     });
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>This will show history!</h1>
-//       {videoIds.map((videoId) => {
-//         const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-//         return (
-//           <div key={videoId}>
-//             <iframe
-//               width="560"
-//               height="315"
-//               src={embedUrl}
-//               title="YouTube video player"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//               allowFullScreen
-//             ></iframe>
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// };
-
-// export default History;
 
 
 // import '../App.css';
