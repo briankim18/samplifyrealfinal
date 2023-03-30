@@ -10,6 +10,7 @@ import {
 import {
   FaList,
   FaRegHeart,
+  FaMusic,
 } from "react-icons/fa";
 import {
   FiHome,
@@ -39,17 +40,21 @@ const Sidebar = () => {
                 <Link to="/">Home</Link>
               </MenuItem>
               <MenuItem
-                icon={<FaList />}
+                icon={<FaMusic />}
                 className={selectedItemIndex === 1 ? "selected" : ""}
-                onClick={() => handleMenuItemClick(1)}
-              >
+                onClick={() => handleMenuItemClick(1)}>
+                <Link to="/chopify">Chopfify</Link>
+              </MenuItem>
+              <MenuItem
+                icon={<FaList />}
+                className={selectedItemIndex === 2 ? "selected" : ""}
+                onClick={() => handleMenuItemClick(2)}>
                 <Link to="/history">History</Link>
               </MenuItem>
               <MenuItem
                 icon={<FaRegHeart />}
-                className={selectedItemIndex === 2 ? "selected" : ""}
-                onClick={() => handleMenuItemClick(2)}
-              >
+                className={selectedItemIndex === 3 ? "selected" : ""}
+                onClick={() => handleMenuItemClick(3)}>
                 <Link to="/favorites">Favorites</Link>
               </MenuItem>
             </Menu>
