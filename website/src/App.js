@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import Home from "./Pages/home.js";
+import Chopify from "./Pages/chopify.js";
 import History from "./Pages/history.js";
 import Favorites from "./Pages/favorites.js";
 
@@ -16,6 +17,7 @@ function App() {
         <div id="pages">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/chopify" element={<Chopify/>} />
           <Route path="/history" element={<History />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
