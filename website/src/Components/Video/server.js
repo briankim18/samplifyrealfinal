@@ -31,18 +31,28 @@ app.get("/japanese", async (req, res, next) => {
         const randomIndex = Math.floor(Math.random() * videoIds.length);
         const randomVideoId = videoIds[randomIndex];
 
-        // Set the state to the chosen video ID
-        // videoIds = randomVideoId;
-        // res.send(randomVideoId);
+        // Fetch the video details
+        const videoDetailsResponse = await youtube.videos.list({
+            part: "snippet",
+            id: randomVideoId,
+        });
+        const videoDetails = videoDetailsResponse.data.items[0].snippet;
+
+        // Set the state to the chosen video ID and description
+        const video = {
+            id: randomVideoId,
+            title: videoDetails.title,
+            description: videoDetails.description,
+        };
+
         const embedUrl = `https://www.youtube.com/embed/${randomVideoId}`;
         const iframeHtml = `<iframe width="560" height="315" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        //res.send(randomVideoId);
 
         res.writeHead(200, {'Content-type': 'application/json'});
 
         let obj = {
             status: "OK", 
-            data: randomVideoId
+            data: video
         }
         res.end(JSON.stringify(obj));
 
@@ -54,7 +64,7 @@ app.get("/northamerica", async (req, res, next) => {
     console.log("received");
 
     try {
-        const playlistId = "PLIFvAFwE4igXUGBFwwYjcL08X5HhDBzZL"
+        const playlistId = "PLIFvAFwE4igVcNgN5yIuFhfm4OU6d5WLa"
         const response = await youtube.playlistItems.list({
             part: "snippet",
             playlistId: playlistId,
@@ -65,18 +75,28 @@ app.get("/northamerica", async (req, res, next) => {
         const randomIndex = Math.floor(Math.random() * videoIds.length);
         const randomVideoId = videoIds[randomIndex];
 
-        // Set the state to the chosen video ID
-        // videoIds = randomVideoId;
-        // res.send(randomVideoId);
+        // Fetch the video details
+        const videoDetailsResponse = await youtube.videos.list({
+            part: "snippet",
+            id: randomVideoId,
+        });
+        const videoDetails = videoDetailsResponse.data.items[0].snippet;
+
+        // Set the state to the chosen video ID and description
+        const video = {
+            id: randomVideoId,
+            title: videoDetails.title,
+            description: videoDetails.description,
+        };
+
         const embedUrl = `https://www.youtube.com/embed/${randomVideoId}`;
         const iframeHtml = `<iframe width="560" height="315" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        //res.send(randomVideoId);
 
         res.writeHead(200, {'Content-type': 'application/json'});
 
         let obj = {
             status: "OK", 
-            data: randomVideoId
+            data: video
         }
         res.end(JSON.stringify(obj));
 
@@ -88,7 +108,7 @@ app.get("/brazilian", async (req, res, next) => {
     console.log("received");
 
     try {
-        const playlistId = "PLIFvAFwE4igW1rIkBc4Qkh8CspebK5cYE"
+        const playlistId = "PLIFvAFwE4igVcNgN5yIuFhfm4OU6d5WLa"
         const response = await youtube.playlistItems.list({
             part: "snippet",
             playlistId: playlistId,
@@ -99,18 +119,28 @@ app.get("/brazilian", async (req, res, next) => {
         const randomIndex = Math.floor(Math.random() * videoIds.length);
         const randomVideoId = videoIds[randomIndex];
 
-        // Set the state to the chosen video ID
-        // videoIds = randomVideoId;
-        // res.send(randomVideoId);
+        // Fetch the video details
+        const videoDetailsResponse = await youtube.videos.list({
+            part: "snippet",
+            id: randomVideoId,
+        });
+        const videoDetails = videoDetailsResponse.data.items[0].snippet;
+
+        // Set the state to the chosen video ID and description
+        const video = {
+            id: randomVideoId,
+            title: videoDetails.title,
+            description: videoDetails.description,
+        };
+
         const embedUrl = `https://www.youtube.com/embed/${randomVideoId}`;
         const iframeHtml = `<iframe width="560" height="315" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        //res.send(randomVideoId);
 
         res.writeHead(200, {'Content-type': 'application/json'});
 
         let obj = {
             status: "OK", 
-            data: randomVideoId
+            data: video
         }
         res.end(JSON.stringify(obj));
 
@@ -122,7 +152,7 @@ app.get("/french", async (req, res, next) => {
     console.log("received");
 
     try {
-        const playlistId = "PLv_zZlDI6bKi-9HxGETVyMtdtCTI__Iqk"
+        const playlistId = "PLIFvAFwE4igVcNgN5yIuFhfm4OU6d5WLa"
         const response = await youtube.playlistItems.list({
             part: "snippet",
             playlistId: playlistId,
@@ -133,18 +163,28 @@ app.get("/french", async (req, res, next) => {
         const randomIndex = Math.floor(Math.random() * videoIds.length);
         const randomVideoId = videoIds[randomIndex];
 
-        // Set the state to the chosen video ID
-        // videoIds = randomVideoId;
-        // res.send(randomVideoId);
+        // Fetch the video details
+        const videoDetailsResponse = await youtube.videos.list({
+            part: "snippet",
+            id: randomVideoId,
+        });
+        const videoDetails = videoDetailsResponse.data.items[0].snippet;
+
+        // Set the state to the chosen video ID and description
+        const video = {
+            id: randomVideoId,
+            title: videoDetails.title,
+            description: videoDetails.description,
+        };
+
         const embedUrl = `https://www.youtube.com/embed/${randomVideoId}`;
         const iframeHtml = `<iframe width="560" height="315" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        //res.send(randomVideoId);
 
         res.writeHead(200, {'Content-type': 'application/json'});
 
         let obj = {
             status: "OK", 
-            data: randomVideoId
+            data: video
         }
         res.end(JSON.stringify(obj));
 
@@ -156,7 +196,7 @@ app.get("/drumbreaks", async (req, res, next) => {
     console.log("received");
 
     try {
-        const playlistId = "PLBgvaqet5h7tne76O-qRO9Z2EDjip72Tk"
+        const playlistId = "PLIFvAFwE4igVcNgN5yIuFhfm4OU6d5WLa"
         const response = await youtube.playlistItems.list({
             part: "snippet",
             playlistId: playlistId,
@@ -167,18 +207,28 @@ app.get("/drumbreaks", async (req, res, next) => {
         const randomIndex = Math.floor(Math.random() * videoIds.length);
         const randomVideoId = videoIds[randomIndex];
 
-        // Set the state to the chosen video ID
-        // videoIds = randomVideoId;
-        // res.send(randomVideoId);
+        // Fetch the video details
+        const videoDetailsResponse = await youtube.videos.list({
+            part: "snippet",
+            id: randomVideoId,
+        });
+        const videoDetails = videoDetailsResponse.data.items[0].snippet;
+
+        // Set the state to the chosen video ID and description
+        const video = {
+            id: randomVideoId,
+            title: videoDetails.title,
+            description: videoDetails.description,
+        };
+
         const embedUrl = `https://www.youtube.com/embed/${randomVideoId}`;
         const iframeHtml = `<iframe width="560" height="315" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        //res.send(randomVideoId);
 
         res.writeHead(200, {'Content-type': 'application/json'});
 
         let obj = {
             status: "OK", 
-            data: randomVideoId
+            data: video
         }
         res.end(JSON.stringify(obj));
 
@@ -190,4 +240,4 @@ app.get("/drumbreaks", async (req, res, next) => {
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`);
-});
+}); 

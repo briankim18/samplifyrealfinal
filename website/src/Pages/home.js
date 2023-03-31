@@ -6,6 +6,8 @@ const Home = () => {
   const [videoId, setVideoId] = useState(null);
   const [buttonClicks] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const [videoDetails, setVideoDetails] = useState({});
+  const apiKey = "AIzaSyCPGGs_J3MRTua_lQzZY1XU-psbFWDulio";
 
   useEffect(() => {
     fetch('./northamerica').then((data) => {
@@ -14,6 +16,17 @@ const Home = () => {
       setVideoId(obj.data);
     });
   }, [buttonClicks]);
+
+  useEffect(() => {
+    if (videoId) {
+      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${apiKey}`)
+        .then((data) => {
+          return data.json();
+        }).then((obj) => {
+          setVideoDetails(obj.items[0].snippet);
+        });
+    }
+  }, [videoId]);
 
   const embedUrl = `https://www.youtube.com/embed/${videoId}`;
   const downloadUrl = `https://youtu.be/${videoId}`;
@@ -54,15 +67,17 @@ const Home = () => {
       <div style={{ padding: '10px' }}>
         <iframe
           id="ytvideo"
-          width="860"
-          height="455"
+          width="700"
+          height="350"
           src={embedUrl} // Update the src attribute dynamically
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-        
+        <div style={{marginLeft: '120px', marginRight: '120px'}}>
+          <p>{videoDetails.description}</p>
+        </div>
       </div>
       <button onClick={() => handleLike(videoId)}> {isLiked ? <FaHeart color="red" /> : <FaRegHeart />} </button>
       <div id = "button-wrap">
@@ -73,14 +88,15 @@ const Home = () => {
         ))}
       </div>
       <iframe
+        id="download-frame"
         title="downloadFrame"
         src={`http://convert2mp3s.com/api/single/mp3?url=${downloadUrl}`}
-        width="32%"
-        height="32%"
-        allowtransparency="true"
+        width="40%"
+        height="10%"
+        allowtransparency="false"
         scrolling="no"
         style={{ border: 'none' }}
-      ></iframe>
+></iframe>
     </div>
   );
 };

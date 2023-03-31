@@ -1,39 +1,35 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.cmd
-.ps1
-default-development
-
+# Ignore dependencies
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-acorn*
-browserlist*
-escodegen*
-ejs*
-eslint*
-esvalidate
+.pnp/
 
-# setup
-slnx.sqlite
-.suo
-VSWorkspaceState.json
-ProjectSettings.json
+# Ignore build output
+build/
+dist/
+out/
+build-output/
+
+# Ignore environment variables file
+.env
+
+# Ignore editor files
+.vscode/
+.idea/
+
+# Ignore log files
+*.log
+
+# Ignore user-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore npm lock files
+package-lock.json
+yarn.lock
+
+# Ignore any files in the root directory except the package.json file
+/*
+!/package.json
 

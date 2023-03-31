@@ -13,10 +13,6 @@ function Header() {
           <input type="text" placeholder="Search" />
           <button type="submit"><i className="fas fa-search"></i></button>
         </form>
-        <div className="icon-container">
-          <i className="fas fa-bell"></i>
-          <i className="fas fa-user-circle"></i>
-        </div>
       </div>
     </header>
   );

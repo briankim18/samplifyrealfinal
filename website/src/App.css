@@ -2,6 +2,54 @@
   text-align: center;
 }
 
+#download-frame {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px gray;
+}
+
+/* Add a scrollbar to the #pages element */
+#pages {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+/* Set a fixed height for the App-header element to prevent content from shifting */
+.App-header {
+  background-color: #282c34;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* Set a fixed height for the Sidebar element to prevent content from shifting */
+#sidebar {
+  height: calc(100vh - 110px); /* Subtract header height from viewport height */
+  overflow-y: auto;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -57,13 +105,4 @@ button {
 
 #button-wrap button {
   margin: 15px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
