@@ -43,7 +43,7 @@ const Sidebar = () => {
                 icon={<FaMusic />}
                 className={selectedItemIndex === 1 ? "selected" : ""}
                 onClick={() => handleMenuItemClick(1)}>
-                <Link to="/chopify">Chopfify</Link>
+                <Link to="/chopify">Chopify</Link>
               </MenuItem>
               <MenuItem
                 icon={<FaList />}

@@ -1,8 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-website/node_modules
-website/node_modules/.cache/
 
 /.pnp
 .pnp.js
@@ -23,7 +21,6 @@ website/node_modules/.cache/
 .ps1
 default-development
 
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -39,8 +36,4 @@ slnx.sqlite
 .suo
 VSWorkspaceState.json
 ProjectSettings.json
-
-
-**/build
-node_modules
 
