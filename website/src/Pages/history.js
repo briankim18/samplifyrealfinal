@@ -39,7 +39,7 @@ const History = () => {
         </div>
         <button onClick={() => {
           const updatedHistory = watchedVideos.filter((id) => id !== videoId);
-          localStorage.setItem('likedVideos', JSON.stringify(updatedHistory));
+          localStorage.setItem('watchedVideos', JSON.stringify(updatedHistory));
           window.location.reload();
         }}>  <FaTrashAlt /> </button>
         </div>
