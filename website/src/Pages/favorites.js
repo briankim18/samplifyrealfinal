@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
   
 const Favorites = () => {
 
@@ -14,37 +15,54 @@ const Favorites = () => {
   const reversedLikedVideos = likedVideos.slice().reverse();
 
   return (
-    <div id="page-wrap" div style={{ paddingTop: '50px', paddingLeft: '200px'}}>
-      <h1>FAVORITES</h1>
+    <div id="page-wrap" className="history-page" style={{ paddingTop: '50px', paddingLeft: '200px'}}>
+      {likedVideos.length > 0 && (
+          <div className="history-toolbar-right">
+            <button className="clear-history-button" onClick={handleLikes}>Clear Favorites</button>
+          </div>
+        )}
+      <h1 className="history-heading">Favorites</h1>
+      <div className="history-toolbar">
+      </div>
       {likedVideos.length === 0 && (
-        "No videos to be displayed"
+        <div className="no-videos">
+          <p>No videos to be displayed</p>
+          <Link className="history-link" to="/">Explore More</Link>
+        </div>
       )}
       {likedVideos.length > 0 && (
-        <button onClick={handleLikes} >Clear Favorites</button>
-      )}
-    {reversedLikedVideos.map((videoId) => (
-      <div>
-        <div key={videoId} style={{ padding: '20px', textAlign: 'center' }}>
-        <iframe
-          id="ytvideo"
-          width="560"
-          height="315"
+        <div className="history-videos-container video-row">
+    {reversedLikedVideos.map((videoId) => (	
+    <div key={videoId} className="video-container" style={{ padding: '10px' }}>
+    <div style={{ position: 'relative' }}>
+      <iframe
+          id="ytvideo"	
+          width="305"
+          height="172"
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-      </div>
-      <button onClick={() => {
+        <button onClick={() => {
           const updatedLikedVideos = likedVideos.filter((id) => id !== videoId);
           localStorage.setItem('likedVideos', JSON.stringify(updatedLikedVideos));
-          window.location.reload();
-        }}>  <FaTrashAlt /> </button>
+          window.location.reload();	
+        }}	
+        style={{	
+          position: 'absolute',	
+          top: 0,	
+          right: 35,	
+        }}> <FaTrashAlt /> 
+        </button>
       </div>
-    ))}
     </div>
-  );
+  ))}
+</div>
+)}
+</div>
+);
 };
   
 export default Favorites;

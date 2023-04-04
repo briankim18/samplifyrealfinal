@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const History = () => {
   const watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
@@ -13,89 +14,57 @@ const History = () => {
   // reverse the order of watchedVideos
   const reversedWatchedVideos = watchedVideos.slice().reverse();
 
-
   return (
-    <div id="page-wrap" div style={{ paddingTop: '50px', paddingLeft: '200px'}}>
-      <h1>HISTORY</h1>
+    <div id="page-wrap" className="history-page" style={{ paddingTop: '50px', paddingLeft: '200px'}}>
+      {watchedVideos.length > 0 && (
+          <div className="history-toolbar-right">
+            <button className="clear-history-button" onClick={handleClearHistory}>Clear History</button>
+          </div>
+        )}
+      <h1 className="history-heading">History</h1>
+      <div className="history-toolbar">
+      </div>
       {watchedVideos.length === 0 && (
-        "No videos to be displayed"
+        <div className="no-videos">
+          <p>No videos to be displayed</p>
+          <Link className="history-link" to="/">Explore More</Link>
+        </div>
       )}
       {watchedVideos.length > 0 && (
-        <button onClick={handleClearHistory} >Clear History</button>
+        <div className="history-videos-container video-row">
+          {reversedWatchedVideos.map((videoId) => (
+            <div key={videoId} className="video-container" style={{ padding: '10px' }}>
+              <div style={{ position: 'relative' }}>
+                <iframe
+                  id="ytvideo"
+                  width="305"
+                  height="172"
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+
+                <button
+                  onClick={() => {
+                    const updatedHistory = watchedVideos.filter((id) => id !== videoId);
+                    localStorage.setItem('watchedVideos', JSON.stringify(updatedHistory));
+                    window.location.reload();
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 35,
+                  }}> <FaTrashAlt /> 
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
-      {reversedWatchedVideos.map((videoId) => (
-        <div>
-        <div key={videoId} style={{ padding: '10px' }}>
-          <iframe
-            id="ytvideo"
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <button onClick={() => {
-          const updatedHistory = watchedVideos.filter((id) => id !== videoId);
-          localStorage.setItem('watchedVideos', JSON.stringify(updatedHistory));
-          window.location.reload();
-        }}>  <FaTrashAlt /> </button>
-        </div>
-      ))}
     </div>
   );
 };
 
 export default History;
-
-
-
-
-// import '../App.css';
-// import React,{useEffect, useState} from 'react';
-
-
-// const Home = () => {
-//   const [videoId, setVideoID] = useState(null);
-//   console.log("sent");
-//   useEffect(() =>{
-//     fetch("./getRandomVideo").then(function(data){
-//       console.log(data);
-//       console.log("received");
-//       return data.json();
-//     }).then(function(obj){
-//       console.log("2nd then");
-//       console.log(obj);
-//       setVideoID(obj.data);
-//     });
-//   },[])
-//   const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-//   const downloadUrl = `https://youtu.be/${videoId}`;
-  
-//   return (
-//     <div id = "page-wrap">
-//     { <>
-//       <h1>HOME PAGE</h1>
-//       <div style={{padding: '10px'}}>
-//       <iframe
-//             id="ytvideo"
-//             width="560"
-//             height="315"
-//             src={embedUrl} // Update the src attribute dynamically
-//             title="YouTube video player"
-//             frameBorder="0"
-//             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//             allowFullScreen
-//           ></iframe>
-//       </div>
-
-//       <iframe title="downloadFrame" src={`http://convert2mp3s.com/api/single/mp3?url=${downloadUrl}`}
-//         width="50%" height="50%" allowtransparency="true" scrolling="no" style={{ border: 'none' }}></iframe></>
-//     }
-//   </div>
-//   );
-// };
-  
-// export default Home;

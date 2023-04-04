@@ -11,11 +11,7 @@ const youtube = google.youtube({
     version: "v3",
     auth: apiKey,
 });
-// app.get("/", (req, res) => {
-//     res.send("Hello from api");
-// });
 
-// })
 app.get("/japanese", async (req, res, next) => {
     console.log("received");
 
