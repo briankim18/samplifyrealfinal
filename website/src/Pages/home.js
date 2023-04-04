@@ -13,7 +13,7 @@ const Home = () => {
     fetch('./northamerica').then((data) => {
       return data.json();
     }).then((obj) => {
-      setVideoId(obj.data);
+      setVideoDetails(obj.items[0].snippet);
     });
   }, [buttonClicks]);
 
@@ -93,7 +93,7 @@ const Home = () => {
         src={`http://convert2mp3s.com/api/single/mp3?url=${downloadUrl}`}
         width="40%"
         height="10%"
-        allowtransparency="false"
+        allowtransparency="true"
         scrolling="no"
         style={{ border: 'none' }}
 ></iframe>

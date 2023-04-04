@@ -106,3 +106,28 @@ button {
 #button-wrap button {
   margin: 15px;
 }
+
+.video-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-container {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.history-heading {
+  display: inline-block;
+  margin-right: auto;
+}
+
+.history-toolbar {
+  display: inline-block;
+  margin-left: auto;
+}
+
+.clear-history-button {
+  position: absolute; 
+  right: 0;
+}
