@@ -3,7 +3,8 @@ import '../App.css';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 const Home = () => {
-  const [videoId, setVideoId] = useState(null);
+  //right now this is just making the same video the default sample
+  const [videoId, setVideoId] = useState("9fr3KUNpx4U");
   const [buttonClicks] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [videoDetails, setVideoDetails] = useState({});
@@ -32,6 +33,7 @@ const Home = () => {
   const downloadUrl = `https://youtu.be/${videoId}`;
 
   const handleClick = (category) => {
+    setSelectedCategory(category);
     fetch(`./${category}`).then((data) => {
       return data.json();
     }).then((obj) => {
@@ -41,6 +43,10 @@ const Home = () => {
       localStorage.setItem('watchedVideos', JSON.stringify(watchedVideos));
       setIsLiked(localStorage.getItem('likedVideos')?.includes(obj.data));
     });
+  };
+
+  const handleSubmit = () => {
+    handleClick(selectedCategory);
   };
 
   const handleLike = (videoId) => {
@@ -58,6 +64,8 @@ const Home = () => {
       setIsLiked(false);
     }
   };
+
+  const [selectedCategory, setSelectedCategory] = useState('brazilian');
 
   const categories = ['brazilian', 'japanese', 'northamerica', 'french', 'drumbreaks'];
 
@@ -79,24 +87,36 @@ const Home = () => {
           <p>{videoDetails.description}</p>
         </div>
       </div>
-      <button onClick={() => handleLike(videoId)}> {isLiked ? <FaHeart color="red" /> : <FaRegHeart />} </button>
-      <div id = "button-wrap">
-      {categories.map((category) => (
-          <button onClick={() => handleClick(category)} key={category}>
-            {category}
-          </button>
-        ))}
+      <div id="select">
+        <label htmlFor="category" style={{ paddingRight: '10px' }}>
+          Select a category:
+        </label>
+        <select id="category">
+          {categories.map((category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleSubmit} style={{ marginLeft: '10px' }}>
+          Submit
+        </button>
+        <button onClick={() => handleLike(videoId)} style={{ marginLeft: '10px' }}>
+          {isLiked ? <FaHeart color="red" /> : <FaRegHeart />}
+        </button>
       </div>
-      <iframe
-        id="download-frame"
-        title="downloadFrame"
-        src={`http://convert2mp3s.com/api/single/mp3?url=${downloadUrl}`}
-        width="40%"
-        height="10%"
-        allowtransparency="true"
-        scrolling="no"
-        style={{ border: 'none' }}
-></iframe>
+      <div style={{ padding: '20px' }}>
+        <iframe
+          id="download-frame"
+          title="downloadFrame"
+          src={`http://convert2mp3s.com/api/single/mp3?url=${downloadUrl}`}
+          width="700"
+          height="100"
+          allowtransparency="true"
+          scrolling="no"
+          style={{ border: 'none'}}>
+        </iframe>
+      </div>
     </div>
   );
 };

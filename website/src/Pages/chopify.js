@@ -5,28 +5,29 @@ const Chopify = () => {
   const [currentAudio, setCurrentAudio] = useState(null);
   const [activeButton, setActiveButton] = useState(null);
 
-  const audioFiles = [
-    '/Samples/audio1.wav',
-    '/Samples/audio2.wav',
-    '/Samples/audio3.wav',
-    '/Samples/audio4.wav',
-    '/Samples/audio5.wav',
+  const audioFiles = React.useMemo(() => [  
+    '/Samples/audio1.wav',  
+    '/Samples/audio2.wav',  
+    '/Samples/audio3.wav',  
+    '/Samples/audio4.wav',  
+    '/Samples/audio5.wav',  
     '/Samples/audio6.wav',
-  ];
+  ], []);
 
-  const playAudio = (audioFile, index) => {
+  const playAudio = React.useCallback((audioFile, index) => {
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
-
+  
     const newAudio = new Audio(audioFile);
     setCurrentAudio(newAudio);
-
+  
     setActiveButton(index);
     newAudio.play();
     newAudio.addEventListener('ended', () => setActiveButton(null));
-  };
+  }, [currentAudio, setActiveButton]);
+  
 
   const buttonStyle = (index) => ({
     backgroundColor: activeButton === index ? 'lightblue' : '',
@@ -42,7 +43,7 @@ const Chopify = () => {
         playAudio(audioFiles[key - 1], key - 1);
       }
     },
-    [audioFiles]
+    [audioFiles, playAudio]
   );
 
   useEffect(() => {
@@ -58,6 +59,7 @@ const Chopify = () => {
       <div
         style={{
           display: 'grid',
+          paddingLeft: '200px',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gridTemplateRows: 'repeat(2, 1fr)',
           gridGap: '20px',

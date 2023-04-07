@@ -18,7 +18,8 @@ const Favorites = () => {
     <div id="page-wrap" className="history-page" style={{ paddingTop: '50px', paddingLeft: '200px'}}>
       {likedVideos.length > 0 && (
           <div className="history-toolbar-right">
-            <button className="clear-history-button" onClick={handleLikes}>Clear Favorites</button>
+            <button className="clear-history-button" onClick={handleLikes} style={{ marginTop : '10px' }}>
+              Clear Favorites</button>
           </div>
         )}
       <h1 className="history-heading">Favorites</h1>
