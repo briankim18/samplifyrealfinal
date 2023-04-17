@@ -1,15 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 55px;
-    z-index: 999;
-    padding-right: 17px; /* add this padding to always reserve space for the scrollbar */
-    box-sizing: content-box; /* ensure padding is not included in width */
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  z-index: 999;
+  padding-right: 17px;
+  box-sizing: content-box;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ... rest of your CSS ... */
+
   
   .header-container {
     display: flex;

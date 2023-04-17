@@ -163,7 +163,7 @@ const Chopify = () => {
 
   return (
     <div id="page-wrap" style={{ paddingTop: '50px' }}>
-      <h1 style={{ textAlign: 'center' }}>Chopify</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: 'Roboto'}}>CHOPIFY</h1>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <iframe
           width="560"
