@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Slider from 'react-slider';
 import '../App.css';
+import { FaWrench } from "react-icons/fa";
 
 const Chopify = () => {
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -162,7 +163,7 @@ const Chopify = () => {
   };
 
   return (
-    <div id="page-wrap" style={{ paddingTop: '50px' }}>
+    <div id="page-wrap" style={{ paddingTop: '1px' , paddingLeft: '200px' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: 'Roboto'}}>CHOPIFY</h1>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <iframe
@@ -202,7 +203,7 @@ const Chopify = () => {
               style={{ width: '50px', height: '50px', marginTop: '10px' }}
               onClick={() => handleWrenchClick(index)}
             >
-              🛠️
+              <FaWrench/>
             </button>
             {selectedWaveform === index && showSlider && (
               <div style={{ paddingTop: '20px' }}>

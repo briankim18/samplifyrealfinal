@@ -15,14 +15,14 @@ const History = () => {
   const reversedWatchedVideos = watchedVideos.slice().reverse();
 
   return (
-    <div id="page-wrap" className="history-page" style={{ paddingTop: '50px', paddingLeft: '200px'}}>
+    <div id="page-wrap" className="history-page" style={{ paddingTop: '1px', paddingLeft: '200px'}}>
       {watchedVideos.length > 0 && (
           <div className="history-toolbar-right">
             <button className="clear-history-button" onClick={handleClearHistory}  style={{ marginTop : '10px' }}>
               Clear History</button>
           </div>
         )}
-      <h1 className="history-heading">History</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: 'Roboto'}}>HISTORY</h1>
       <div className="history-toolbar">
       </div>
       {watchedVideos.length === 0 && (
