@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "react-bootstrap": "^2.7.2"
+    "react-bootstrap": "^2.7.4",
+    "react-icons": "^4.8.0",
+    "react-pro-sidebar": "^1.0.0",
+    "react-router-dom": "^6.10.0"
   }
 }
