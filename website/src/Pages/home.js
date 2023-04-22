@@ -13,8 +13,6 @@ const Home = () => {
   useEffect(() => {
     fetch('./northamerica').then((data) => {
       return data.json();
-    }).then((obj) => {
-      setVideoDetails(obj.items[0].snippet);
     });
   }, [buttonClicks]);
 
@@ -70,7 +68,8 @@ const Home = () => {
   const categories = ['brazilian', 'japanese', 'northamerica', 'french', 'drumbreaks'];
 
   return (
-    <div id="page-wrap" div style={{ paddingTop: '1px', paddingLeft: '200px'}}>
+    <div id="page-wrap" style={{ paddingTop: '1px', paddingLeft: '200px'}}>
+
       <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>HOME PAGE</h1>      <div style={{ padding: '10px' }}>
         <iframe
           id="ytvideo"

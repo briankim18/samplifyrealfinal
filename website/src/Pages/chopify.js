@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Slider from 'react-slider';
 import '../App.css';
 import { FaWrench } from "react-icons/fa";
@@ -9,7 +9,7 @@ const Chopify = () => {
   const [selectedWaveform, setSelectedWaveform] = useState(null);
   const [regionData, setRegionData] = useState([]);
 
-  const audioRef = useRef(null);
+  //const audioRef = useRef(null);
 
   const audioFiles = React.useMemo(() => [
     new Audio('/Samples/1_0.30.wav'),
@@ -78,9 +78,9 @@ const Chopify = () => {
     }
   };
 
-  const resetRegions = () => {
+/*   const resetRegions = () => {
     setRegionData(Array(audioFiles.length).fill(null));
-  };
+  }; */
 
   const buttonStyle = (index) => ({
     backgroundColor: activeButton === index ? 'lightblue' : '',
@@ -99,6 +99,7 @@ const Chopify = () => {
         stopAudio();
       }
     },
+    // eslint-disable-next-line
     [audioFiles, playAudio]
   );
 
@@ -130,9 +131,10 @@ const Chopify = () => {
         currentAudio.removeEventListener('timeupdate', handleRegionUpdate);
       }
     };
+    // eslint-disable-next-line
   }, [currentAudio, selectedWaveform, regionData]);
 
-  const [sliderValues, setSliderValues] = useState([0, 360]);
+  //const [sliderValues, setSliderValues] = useState([0, 360]);
 
   const handleSliderChange = (values) => {
     const newRegionData = [...regionData];
