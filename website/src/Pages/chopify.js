@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Slider from 'react-slider';
 import '../App.css';
 import { FaWrench } from "react-icons/fa";
@@ -9,7 +9,7 @@ const Chopify = () => {
   const [selectedWaveform, setSelectedWaveform] = useState(null);
   const [regionData, setRegionData] = useState([]);
 
-  //const audioRef = useRef(null);
+  const audioRef = useRef(null);
 
   const audioFiles = React.useMemo(() => [
     new Audio('/Samples/1_0.30.wav'),
@@ -42,14 +42,13 @@ const Chopify = () => {
     newAudio.addEventListener('ended', () => setActiveButton(null));
   }, [currentAudio, setActiveButton]);
 
-  const stopAudio = useCallback(() => {
+  const stopAudio = () => {
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
       setActiveButton(null);
     }
-  }, [currentAudio, setActiveButton]);
-  
+  };
 
   const handleWrenchClick = (index) => {
     if (selectedWaveform === index) {
@@ -67,9 +66,21 @@ const Chopify = () => {
     setShowSlider(false);
   };
 
-/*   const resetRegions = () => {
+  const handleRegionUpdate = () => {
+    if (currentAudio && selectedWaveform !== null && regionData[selectedWaveform]) {
+      const { start, end } = regionData[selectedWaveform];
+
+      if (currentAudio.currentTime >= end) {
+        currentAudio.pause();
+        currentAudio.currentTime = start;
+        currentAudio.play();
+      }
+    }
+  };
+
+  const resetRegions = () => {
     setRegionData(Array(audioFiles.length).fill(null));
-  }; */
+  };
 
   const buttonStyle = (index) => ({
     backgroundColor: activeButton === index ? 'lightblue' : '',
@@ -77,34 +88,51 @@ const Chopify = () => {
     width: '100px',
     height: '100px',
   });
-  
+
+  const handleKeyPress = useCallback(
+    (event) => {
+      const key = event.key;
+      if (key >= '1' && key <= '6') {
+        const index = key - 1;
+        playAudio(audioFiles[index], index);
+      } else if (key === 's') {
+        stopAudio();
+      }
+    },
+    [audioFiles, playAudio]
+  );
 
   useEffect(() => {
-    const handleRegionUpdate = () => {
-      if (currentAudio && selectedWaveform !== null && regionData[selectedWaveform]) {
-        const { start, end } = regionData[selectedWaveform];
-  
-        if (currentAudio.currentTime >= end) {
-          currentAudio.pause();
-          currentAudio.currentTime = start;
-          currentAudio.play();
-        }
-      }
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
     };
-  
+  }, [handleKeyPress]);
+
+  useEffect(() => {
     if (currentAudio) {
+      const handleRegionUpdate = () => {
+        if (currentAudio && selectedWaveform !== null && regionData[selectedWaveform]) {
+          const { start, end } = regionData[selectedWaveform];
+  
+          if (currentAudio.currentTime >= end) {
+            currentAudio.pause();
+            currentAudio.currentTime = start;
+            currentAudio.play();
+          }
+        }
+      };
+      
       currentAudio.addEventListener('timeupdate', handleRegionUpdate);
     }
-  
     return () => {
       if (currentAudio) {
         currentAudio.removeEventListener('timeupdate', handleRegionUpdate);
       }
     };
   }, [currentAudio, selectedWaveform, regionData]);
-  
 
-  //const [sliderValues, setSliderValues] = useState([0, 360]);
+  const [sliderValues, setSliderValues] = useState([0, 360]);
 
   const handleSliderChange = (values) => {
     const newRegionData = [...regionData];
