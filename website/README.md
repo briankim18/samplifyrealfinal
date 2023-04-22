@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Necessary Imports:
 
 ### `npm install react-pro-sidebar react-icons`
-### `react-router-dom react-bootstrap bootstrap`
+### `react-router-dom react-bootstrap bootstrap react-slider`
 
 ## Available Scripts
 

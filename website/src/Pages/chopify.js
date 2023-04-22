@@ -119,24 +119,29 @@ const Chopify = () => {
   };
 
   // New state for drum loop
-  const [loopingDrum, setLoopingDrum] = useState(null);
+  const [loopingDrums, setLoopingDrums] = useState({
+    drum1: null,
+    drum2: null,
+    drum3: null,
+  });
 
-  const toggleDrumLoop = () => {
-    if (loopingDrum) {
-      loopingDrum.pause();
-      loopingDrum.currentTime = 0;
-      setLoopingDrum(null);
+  // New function for toggling drum loops
+  const toggleDrumLoop = (drumKey, audioPath) => {
+    if (loopingDrums[drumKey]) {
+      loopingDrums[drumKey].pause();
+      loopingDrums[drumKey].currentTime = 0;
+      setLoopingDrums({ ...loopingDrums, [drumKey]: null });
     } else {
-      const drumLoop = new Audio('/Samples/143bpm.wav'); // Replace with the correct path
+      const drumLoop = new Audio(audioPath);
       drumLoop.loop = true;
       drumLoop.play();
-      setLoopingDrum(drumLoop);
+      setLoopingDrums({ ...loopingDrums, [drumKey]: drumLoop });
     }
   };
 
   return (
-    <div id="page-wrap" style={{ paddingTop: '1px' , paddingLeft: '200px' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: 'Roboto'}}>CHOPIFY</h1>
+    <div id="page-wrap" style={{ paddingTop: '1px', paddingLeft: '200px' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>CHOPIFY</h1>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <iframe
           width="560"
@@ -149,16 +154,15 @@ const Chopify = () => {
         ></iframe>
       </div>
       <div
-  style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, auto)',
-    gridTemplateRows: 'repeat(2, auto)',
-    justifyContent: 'center',
-    gap: '50px',
-    marginBottom: '20px',
-  }}
->
-
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, auto)',
+          gridTemplateRows: 'repeat(2, auto)',
+          justifyContent: 'center',
+          gap: '50px',
+          marginBottom: '20px',
+        }}
+      >
         {audioFiles.map((audioFile, index) => (
           <div key={index} style={{ textAlign: 'center', margin: '10px' }}>
             <button
@@ -175,7 +179,7 @@ const Chopify = () => {
               style={{ width: '50px', height: '50px', marginTop: '10px' }}
               onClick={() => handleWrenchClick(index)}
             >
-              <FaWrench/>
+              <FaWrench />
             </button>
             {selectedWaveform === index && showSlider && (
               <div style={{ paddingTop: '20px' }}>
@@ -211,18 +215,33 @@ const Chopify = () => {
       <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
         <button onClick={stopAudio}>Stop</button>
       </div>
-      {/* New drum button */}
+      {/* New drum buttons */}
       <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
-        <button
-          className={`drum-button${loopingDrum ? ' active' : ''}`}
-          onClick={toggleDrumLoop}
-        >
-          143 BPM
-        </button>
-      </div>
-    </div>
-  );
-  
+  <button
+    className={`drum-button`}
+    onClick={() => toggleDrumLoop('drum1', '/Samples/143bpm.wav')}
+    style={{ marginRight: '10px', backgroundColor: loopingDrums.drum1 ? 'lightblue' : '' }}
+  >
+    Drumbeat 1
+  </button>
+  <button
+    className={`drum-button`}
+    onClick={() => toggleDrumLoop('drum2', '/Samples/drumloop2.wav')} // Replace with the correct path for drumbeat 2
+    style={{ marginRight: '10px', backgroundColor: loopingDrums.drum2 ? 'lightblue' : '' }}
+  >
+    Drumbeat 2
+  </button>
+  <button
+    className={`drum-button`}
+    onClick={() => toggleDrumLoop('drum3', '/Samples/drumbeat2.wav')} // Replace with the correct path for drumbeat 3
+    style={{ backgroundColor: loopingDrums.drum3 ? 'lightblue' : '' }}
+  >
+    Drumbeat 3
+  </button>
+</div>
+
+</div>
+);
 };
 
 export { Chopify as default };

@@ -22,7 +22,7 @@ const History = () => {
               Clear History</button>
           </div>
         )}
-      <h1 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: 'Roboto'}}>HISTORY</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>HISTORY</h1>
       <div className="history-toolbar">
       </div>
       {watchedVideos.length === 0 && (

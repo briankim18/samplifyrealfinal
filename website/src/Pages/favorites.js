@@ -22,7 +22,7 @@ const Favorites = () => {
               Clear Favorites</button>
           </div>
         )}
-      <h1 style={{ textAlign: 'center', marginBottom: '20px', fontFamily: 'Roboto'}}>FAVORITES</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>FAVORITES</h1>
       <div className="history-toolbar">
       </div>
       {likedVideos.length === 0 && (
