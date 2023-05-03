@@ -8,13 +8,14 @@ const Home = () => {
   const [buttonClicks] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [videoDetails, setVideoDetails] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState('brazilian');
   const apiKey = "AIzaSyCPGGs_J3MRTua_lQzZY1XU-psbFWDulio";
 
   useEffect(() => {
-    fetch('./northamerica').then((data) => {
+    fetch(`./${selectedCategory}`).then((data) => {
       return data.json();
     });
-  }, [buttonClicks]);
+  }, [buttonClicks, selectedCategory]); 
 
   useEffect(() => {
     if (videoId) {
@@ -43,9 +44,11 @@ const Home = () => {
     });
   };
 
+  
   const handleSubmit = () => {
-    handleClick(selectedCategory);
+    handleClick(document.getElementById('category').value); // Updated to get selected value from the select element
   };
+
 
   const handleLike = (videoId) => {
     const likedVideos = JSON.parse(localStorage.getItem('likedVideos')) || [];
@@ -62,8 +65,6 @@ const Home = () => {
       setIsLiked(false);
     }
   };
-
-  const [selectedCategory, setSelectedCategory] = useState('brazilian');
 
   const categories = ['brazilian', 'japanese', 'northamerica', 'french', 'drumbreaks'];
 
