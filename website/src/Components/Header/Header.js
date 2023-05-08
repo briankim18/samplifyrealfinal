@@ -2,7 +2,6 @@ import React from 'react';
 import './Header.css';
 import logo from './samplifylogo.png';
 
-
 function Header() {
   return (
       <div className="header-container">

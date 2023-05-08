@@ -1,3 +1,10 @@
+/*
+* This sidebar and its accompanying css styling were constructed with help from the following resources:
+* 
+* 1. NPM Pro-React Sidebar Documentation : https://www.npmjs.com/package/react-pro-sidebar
+* 2. Medium article about creating React sidebars: https://medium.com/how-to-react/create-a-sidebar-menu-in-react-js-3463b306ca9a 
+*/
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {

@@ -1,3 +1,6 @@
+/* This App.css file was expanded upon from the original file provided with the creation of a React project*/
+/* Colors are based off of a Wes Anderson pallete, and  */
+
 html {
   height: 100%;
   width: 100%;
@@ -21,7 +24,6 @@ body {
   box-shadow: 2px 2px 5px gray;
 }
 
-/* Add a scrollbar to the #pages element */
 #pages {
   overflow-y: scroll;
   height: 100%;
@@ -43,31 +45,29 @@ body {
   background: #5BA6A6;
 }
 
-/* Set a fixed height for the Sidebar element to prevent content from shifting */
 #sidebar {
-  height: calc(100vh - 110px); /* Subtract header height from viewport height */
+  height: calc(100vh - 110px);
   overflow-y: auto;
 }
 
-/* Style the logo */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-/* Style container */
+
 .outer-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
   padding: 0 50px;
 }
 
-/* Style buttons */
+
 button {
   font-size: 16px;
-  color: #ffffff; /* Change the font color to a light color */
-  background-color: #911819; /* Use dark red */
+  color: #ffffff; 
+  background-color: #911819;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -76,10 +76,9 @@ button {
 }
 
 button:hover {
-  background-color: #BF3326; /* Use light brown on hover */
+  background-color: #BF3326; 
 }
 
-/* Style button container */
 #button-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -88,8 +87,8 @@ button:hover {
 }
 .chop-button {
   font-size: 16px;
-  color: #ffffff; /* Change the font color to a light color */
-  background-color: #4F528C; /* Use dark red */
+  color: #ffffff;
+  background-color: #4F528C;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -99,8 +98,8 @@ button:hover {
 
 .drum-button {
   font-size: 16px;
-  color: #ffffff; /* Change the font color to a light color */
-  background-color: #5BA6A6; /* Use dark red */
+  color: #ffffff; 
+  background-color: #5BA6A6;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -123,20 +122,18 @@ button:hover {
   margin: 15px;
 }
 
-/* Style video row */
 .video-row {
   display: flex;
   flex-wrap: wrap;
 }
 
-/* Style video container */
+
 .video-container {
   width: 50%;
   box-sizing: border-box;
   padding: 10px;
 }
 
-/* Style history heading */
 .history-heading {
   display: block;
   font-size: 2em;
@@ -147,7 +144,6 @@ button:hover {
   font-weight: bold;
 }
 
-/* Style history toolbar */
 .history-toolbar {
   display: inline-block;
   margin-left: auto;

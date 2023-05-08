@@ -263,14 +263,14 @@ const Chopify = () => {
   </button>
   <button
     className={`drum-button`}
-    onClick={() => toggleDrumLoop('drum2', '/Samples/drumloop2.wav')} // Replace with the correct path for drumbeat 2
+    onClick={() => toggleDrumLoop('drum2', '/Samples/drumloop2.wav')}
     style={{ marginRight: '10px', backgroundColor: loopingDrums.drum2 ? '#0168c7' : '' }}
   >
     Drumbeat 2
   </button>
   <button
     className={`drum-button`}
-    onClick={() => toggleDrumLoop('drum3', '/Samples/drumbeat2.wav')} // Replace with the correct path for drumbeat 3
+    onClick={() => toggleDrumLoop('drum3', '/Samples/drumbeat2.wav')}
     style={{ backgroundColor: loopingDrums.drum3 ? '#0168c7' : '' }}
   >
     Drumbeat 3

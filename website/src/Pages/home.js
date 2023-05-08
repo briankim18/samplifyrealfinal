@@ -3,7 +3,7 @@ import '../App.css';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 const Home = () => {
-  //right now this is just making the same video the default sample
+
   const [videoId, setVideoId] = useState("9fr3KUNpx4U");
   const [buttonClicks] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
