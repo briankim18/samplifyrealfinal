@@ -69,9 +69,9 @@ const Home = () => {
   const categories = ['brazilian', 'japanese', 'northamerica', 'french', 'drumbreaks'];
 
   return (
-    <div id="page-wrap" style={{ paddingTop: '1px', paddingLeft: '200px'}}>
+    <div id="page-wrap" style={{ width: '100%', minHeight: '100vh', paddingTop: '1px', paddingLeft: '200px'}}>
 
-      <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>HOME PAGE</h1>      <div style={{ padding: '10px' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>HOME PAGE</h1> <div style={{ padding: '10px' }}>
         <iframe
           id="ytvideo"
           width="700"

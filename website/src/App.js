@@ -10,11 +10,19 @@ import Favorites from "./Pages/favorites.js";
 
 function App() {
   return (
+    
     <div className="App" id="outer-container">
+      
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      />
+    </head>
       <BrowserRouter>
       <Header />
         <Sidebar />
-        <div id="pages">
+        <div id="pages" style={{width: '100%'}}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/chopify" element={<Chopify/>} />

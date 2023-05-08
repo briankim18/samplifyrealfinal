@@ -83,7 +83,7 @@ const Chopify = () => {
   }; */
 
   const buttonStyle = (index) => ({
-    backgroundColor: activeButton === index ? 'lightblue' : '',
+    backgroundColor: activeButton === index ? 'button' : '',
     transition: 'background-color 0.1s ease-out',
     width: '100px',
     height: '100px',
@@ -183,6 +183,11 @@ const Chopify = () => {
           allowFullScreen
         ></iframe>
       </div>
+      <div style={{marginLeft: '120px', marginRight: '120px'}}>
+          <p>Try out Chopify! </p>
+          <p> Experiment with our provided Drum Beats and set the sliders using the wrench. 
+        To play the snippets you can click the numbered pads or use the corresponding key on your keyboard.</p>
+        </div>
       <div
         style={{
           display: 'grid',
@@ -191,11 +196,12 @@ const Chopify = () => {
           justifyContent: 'center',
           gap: '50px',
           marginBottom: '20px',
+          
         }}
       >
         {audioFiles.map((audioFile, index) => (
           <div key={index} style={{ textAlign: 'center', margin: '10px' }}>
-            <button
+            <button className={`chop-button`}
               style={buttonStyle(index)}
               onClick={() => {
                 playAudio(audioFile, index);
@@ -206,6 +212,7 @@ const Chopify = () => {
             </button>
             <br />
             <button
+              className={`wrench-button`}
               style={{ width: '50px', height: '50px', marginTop: '10px' }}
               onClick={() => handleWrenchClick(index)}
             >
@@ -250,21 +257,21 @@ const Chopify = () => {
   <button
     className={`drum-button`}
     onClick={() => toggleDrumLoop('drum1', '/Samples/143bpm.wav')}
-    style={{ marginRight: '10px', backgroundColor: loopingDrums.drum1 ? 'lightblue' : '' }}
+    style={{ marginRight: '10px', backgroundColor: loopingDrums.drum1 ? '#0168c7' : '' }}
   >
     Drumbeat 1
   </button>
   <button
     className={`drum-button`}
     onClick={() => toggleDrumLoop('drum2', '/Samples/drumloop2.wav')} // Replace with the correct path for drumbeat 2
-    style={{ marginRight: '10px', backgroundColor: loopingDrums.drum2 ? 'lightblue' : '' }}
+    style={{ marginRight: '10px', backgroundColor: loopingDrums.drum2 ? '#0168c7' : '' }}
   >
     Drumbeat 2
   </button>
   <button
     className={`drum-button`}
     onClick={() => toggleDrumLoop('drum3', '/Samples/drumbeat2.wav')} // Replace with the correct path for drumbeat 3
-    style={{ backgroundColor: loopingDrums.drum3 ? 'lightblue' : '' }}
+    style={{ backgroundColor: loopingDrums.drum3 ? '#0168c7' : '' }}
   >
     Drumbeat 3
   </button>
