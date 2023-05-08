@@ -1,6 +1,7 @@
 # Welcome to Samplify!
-
 This project was created by Kevin Chandran, Joshua Cheng, Brian Kim & Jenna Pearson as a part of the CS 4644.
+
+![Screenshot (568)](https://user-images.githubusercontent.com/85366888/236935898-c43f5273-f5db-464d-a4e8-a43c4555785a.png)
 
 "Samplify" is an innovative web application made for sample-based music producers that combines the YouTube and music worlds to deliver a productive, user-friendly, and engaging experience. Samplify reduces the need for traditional crate digging by using YouTube API to access curated genre-specific playlists, saving producer's time and effort while preserving the genuine feel of finding unusual and obscure samples. With customizable filters such as origin, Samplify empowers users to explore a vast range of musical styles and overcome creative blocks. 
 
