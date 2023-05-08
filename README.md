@@ -6,7 +6,7 @@ This project was created by Kevin Chandran, Joshua Cheng, Brian Kim & Jenna Pear
 2. [ Necessary Imports. ](#import)
 3. [ To Run. ](#run)
 4. [ Additional Commands. ](#additional)
-5. [ Deployent. ](#depl)
+5. [ Deployment. ](#depl)
 
 ![Screenshot (568)](https://user-images.githubusercontent.com/85366888/236935898-c43f5273-f5db-464d-a4e8-a43c4555785a.png)
 
