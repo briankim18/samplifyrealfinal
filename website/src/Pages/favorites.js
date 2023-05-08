@@ -15,7 +15,7 @@ const Favorites = () => {
   const reversedLikedVideos = likedVideos.slice().reverse();
 
   return (
-    <div id="page-wrap" className="history-page" style={{ paddingTop: '1px', paddingLeft: '200px'}}>
+    <div id="page-wrap" className="pages" style={{width: '100%', minHeight: '100vh', paddingTop: '1px', paddingLeft: '200px'}}>
       {likedVideos.length > 0 && (
           <div className="history-toolbar-right">
             <button className="clear-history-button" onClick={handleLikes} style={{ marginTop : '10px' }}>
@@ -54,7 +54,6 @@ const Favorites = () => {
         style={{	
           position: 'absolute',	
           top: 0,	
-          right: 35,	
         }}> <FaTrashAlt /> 
         </button>
       </div>

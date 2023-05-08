@@ -15,7 +15,7 @@ const History = () => {
   const reversedWatchedVideos = watchedVideos.slice().reverse();
 
   return (
-    <div id="page-wrap" className="history-page" style={{ paddingTop: '1px', paddingLeft: '200px'}}>
+    <div id="page-wrap" className="history-page" style={{width: '100%', minHeight:'100vh', paddingTop: '1px', paddingLeft: '200px'}}>
       {watchedVideos.length > 0 && (
           <div className="history-toolbar-right">
             <button className="clear-history-button" onClick={handleClearHistory}  style={{ marginTop : '10px' }}>
@@ -33,35 +33,35 @@ const History = () => {
       )}
       {watchedVideos.length > 0 && (
         <div className="history-videos-container video-row">
-          {reversedWatchedVideos.map((videoId) => (
-            <div key={videoId} className="video-container" style={{ padding: '10px' }}>
-              <div style={{ position: 'relative' }}>
-                <iframe
-                  id="ytvideo"
-                  width="305"
-                  height="172"
-                  src={`https://www.youtube.com/embed/${videoId}`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+          {reversedWatchedVideos.map((videoId, index) => (
+          <div key={`video-${index}`} className="video-container" style={{ padding: '10px' }}>
+            <div style={{ position: 'relative' }}>
+              <iframe
+                id="ytvideo"
+                width="305"
+                height="172"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
 
-                <button
-                  onClick={() => {
-                    const updatedHistory = watchedVideos.filter((id) => id !== videoId);
-                    localStorage.setItem('watchedVideos', JSON.stringify(updatedHistory));
-                    window.location.reload();
-                  }}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 35,
-                  }}> <FaTrashAlt /> 
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  const updatedHistory = watchedVideos.filter((id) => id !== videoId);
+                  localStorage.setItem('watchedVideos', JSON.stringify(updatedHistory));
+                  window.location.reload();
+                }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                }}> <FaTrashAlt /> 
+              </button>
             </div>
-          ))}
+          </div>
+        ))}
+
         </div>
       )}
     </div>
