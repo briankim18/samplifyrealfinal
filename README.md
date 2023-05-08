@@ -1,17 +1,28 @@
 # Welcome to Samplify!
 This project was created by Kevin Chandran, Joshua Cheng, Brian Kim & Jenna Pearson as a part of the CS 4644.
 
+# Table of Contents
+1. [ Introduction. ](#intro)
+2. [ Necessary Imports. ](#import)
+3. [ To Run. ](#run)
+4. [ Additional Commands. ](#additional)
+5. [ Deployent. ](#depl)
+
 ![Screenshot (568)](https://user-images.githubusercontent.com/85366888/236935898-c43f5273-f5db-464d-a4e8-a43c4555785a.png)
 
+<a name="intro"></a>
+## Introduction
 "Samplify" is an innovative web application made for sample-based music producers that combines the YouTube and music worlds to deliver a productive, user-friendly, and engaging experience. Samplify reduces the need for traditional crate digging by using YouTube API to access curated genre-specific playlists, saving producer's time and effort while preserving the genuine feel of finding unusual and obscure samples. With customizable filters such as origin, Samplify empowers users to explore a vast range of musical styles and overcome creative blocks. 
 
 Samplify incorporates a "Chopify" tool, transforming the sampled audio into playable pads, inspired by the iconic Akai MPC. This feature encourages musicians to manipulate and re-contextualize the samples, fostering creativity and promoting the evolution of new compositions. Through the integration of YouTube, music, and cutting-edge technology, Samplify revolutionizes the sampling process, streamlining the workflow for producers while honoring the culture and art of crate digging.
 
-## Necessary Imports:
+<a name="import"></a>
+## Necessary Imports
 In order to run samplify begin by importing the following dependencies with the below command:
 
 ### `npm install react-pro-sidebar react-icons react-router-dom react-bootstrap bootstrap react-slider`
 
+<a name="run"></a>
 ## To run
 The easiest way to run Samplify locally is by executing the following commands:
 
@@ -25,6 +36,7 @@ In a separate terminal run:
 
 The Samplify instance should then be opened in your default browser window.
 
+<a name="additional"></a>
 ## Additional Available Commands
 
 As this web app was created in React, it also supports the following additional commands:
@@ -53,3 +65,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+<a name="depl"></a>
+## Deployment
+After receiving positive feedback about the usefulness and uniqueness of our site, we decided to try deploying Samplify using Netlify. Unfortunately, due to Samplify's reliance on the Youtube API and MP3 Converter API, we were unable to successfully deploy with full site functionalities. As a result, we strongly encourage running Samplify locally through npm start. Nonetheless, we wanted to include the link to our Netlify site - please keep in mind that Chopify is the only page with full functionality.
+
+https://samplify.netlify.app/
