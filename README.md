@@ -1,7 +1,7 @@
 # Welcome to Samplify!
 This project was created by Kevin Chandran, Joshua Cheng, Brian Kim & Jenna Pearson as a part of the CS 4644.
 
-# Table of Contents
+#### Table of Contents
 1. [ Introduction. ](#intro)
 2. [ Necessary Imports. ](#import)
 3. [ To Run. ](#run)
